@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หมูสะเต๊ะ สว่าง เจ้าเก่า - ร้านหมูสะเต๊ะแท้รสดั้งเดิม</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@500;400;500;600;700&display=swap');
+        body { font-family: 'Sarabun', sans-serif; }
+        .hero-bg {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+        .satay-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='50' cy='50' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .cart-count {
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+        }
+        .thumbnail {
+            width: 100%;           /* ให้กว้างเต็มกล่อง */
+            height: 200px;         /* ความสูงเท่ากันทุกภาพ (เลือกได้) */
+            object-fit: contain;   /* เก็บรายละเอียดชัดที่สุด ไม่บี้ภาพ */
+            image-rendering: auto; /* ให้เบราว์เซอร์เลือกคุณภาพที่ดีที่สุด */
+            border-radius: 8px;    /* มุมโค้งสวยงาม */
+            margin-bottom: 12px;   /* เว้นช่องว่างด้านล่าง */
+            background: #fff;      /* ใส่พื้นหลังเผื่อรูปเล็ก */
+        }      
+         html {
+            scrollbar-gutter: stable ;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-blue-600">🍢 หมูสะเต๊ะ สว่าง เจ้าเก่า</div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium">หน้าแรก</a>
+                    <a href="#menu" class="nav-link text-gray-700 hover:text-blue-600 font-medium">เมนูสินค้า</a>
+                    <a href="#promotions" class="nav-link text-gray-700 hover:text-blue-600 font-medium">โปรโมชั่น</a>
+                    <a href="#order" class="nav-link text-gray-700 hover:text-blue-600 font-medium">วิธีสั่งซื้อ</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="cart-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                            🛒 ตะกร้า
+                        </button>
+                        <span id="cart-count" class="cart-count hidden">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" 
+    class="relative bg-cover bg-center bg-no-repeat py-20" 
+    style="background-image: url('picture/Pork.jpg.jpg');">  
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl font-bold text-white mb-6">หมูสะเต๊ะ สว่าง เจ้าเก่า</h1>
+        <p class="text-xl text-orange-100 mb-8">รสชาติดั้งเดิมที่คุณคุ้นเคย มานานกว่า 50 ปี</p>
+        <div class="bg-yellow-400 text-yellow-900 px-6 py-3 rounded-full inline-block font-bold text-lg mb-8">
+            🎉 โปรพิเศษ! ซื้อครบ 100 บาท ส่งฟรี!
+        </div>
+        <div class="flex justify-center space-x-4">
+            <button onclick="scrollToSection('menu')" class="bg-white text-black-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                ดูเมนู
+            </button>
+            <button onclick="scrollToSection('order')" button class="text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-900 transition-colors"  style="background-color:#1E90FF;" onmouseover="this.style.backgroundColor='#4169E1';" onmouseout="this.style.backgroundColor='#1E90FF';">
+                สั่งซื้อทันที
+            </button>
+        </div>
+    </div>
+</section>
+
+    <!-- Featured Menu -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">เมนูแนะนำ</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 text-center">
+                    <div class="text-6xl mb-4">🍢</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">หมูสะเต๊ะไม้เดี่ยว</h3>
+                    <p class="text-gray-600 mb-4">หมูสดใหม่ หมักด้วยเครื่องเทศพิเศษ</p>
+                    <div class="text-2xl font-bold text-blue-600">15 บาท/ไม้</div>
+                </div>
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6 text-center">
+                    <div class="text-6xl mb-4">🥜</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">น้ำจิ้มถั่ว</h3>
+                    <p class="text-gray-600 mb-4">สูตรเด็ด รสชาติเข้มข้น</p>
+                    <div class="text-2xl font-bold text-blue-600">20 บาท/ถ้วย</div>
+                </div>
+                <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-6 text-center">
+                    <div class="text-6xl mb-4">🍞</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">ขนมปังปิ้ง</h3>
+                    <p class="text-gray-600 mb-4">ขนมปังสดใหม่ ปิ้งกรอบนอกนุ่มใน</p>
+                    <div class="text-2xl font-bold text-blue-600">10 บาท/แผ่น</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">รีวิวจากลูกค้า</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"อร่อยมาก! หมูนุ่ม น้ำจิ้มเข้มข้น รสชาติดั้งเดิมที่หาไม่ได้ที่ไหน"</p>
+                    <div class="font-bold text-gray-800">- คุณสมชาย</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"สั่งมาหลายครั้งแล้ว คุณภาพคงที่ ส่งเร็ว บริการดีมาก"</p>
+                    <div class="font-bold text-gray-800">- คุณมาลี</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"ลูกค้าประจำมา 10 ปีแล้ว รสชาติไม่เคยเปลี่ยน อร่อยเหมือนเดิม"</p>
+                    <div class="font-bold text-gray-800">- คุณวิชัย</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">เมนูสินค้า</h2>
+            
+            <!-- Satay Menu -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-blue-600 mb-6">🍢 หมูสะเต๊ะ</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/p1.jpg" class="thumbnail" alt="p1">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">หมูสะเต๊ะไม้เดี่ยว</h4>
+                        <p class="text-gray-600 mb-3">หมูสดใหม่ หมักเครื่องเทศ</p>
+                        <div class="text-xl font-bold text-purple-600 mb-3">9 บาท/ไม้</div>
+                        <button onclick="addToCart('หมูสะเต๊ะไม้เดี่ยว', 15)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/p1.jpg" class="thumbnail" alt="p1">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">ชุดหมูสะเต๊ะ 15 ไม้</h4>
+                        <p class="text-gray-600 mb-3">พร้อมน้ำจิ้มถั่ว + ขนมปัง</p>
+                        <div class="text-xl font-bold text-purple-600 mb-3">135 บาท</div>
+                        <button onclick="addToCart('ชุดหมูสะเต๊ะ 10 ไม้', 140)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/p1.jpg" class="thumbnail" alt="p1">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">ชุดหมูสะเต๊ะ 20 ไม้</h4>
+                        <p class="text-gray-600 mb-3">พร้อมน้ำจิ้มถั่ว + ขนมปัง</p>
+                        <div class="text-xl font-bold text-purple-600 mb-3">180 บาท</div>
+                        <button onclick="addToCart('ชุดหมูสะเต๊ะ 20 ไม้', 270)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/p1.jpg" class="thumbnail" alt="p1">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">ชุดหมูสะเต๊ะ 50 ไม้</h4>
+                        <p class="text-gray-600 mb-3">สำหรับงานเลี้ยง พร้อมของแถม</p>
+                        <div class="text-xl font-bold text-purple-600 mb-3">450 บาท</div>
+                        <button onclick="addToCart('ชุดหมูสะเต๊ะ 50 ไม้', 650)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Items -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-blue-600 mb-6">🥜 เครื่องเคียง</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/w1.jpg" class="thumbnail" alt="w1">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">น้ำจิ้มถั่ว</h4>
+                        <p class="text-gray-600 mb-3">สูตรเด็ด รสเข้มข้น</p>
+                        <div class="text-xl font-bold text-purple-600 mb-3">20 บาท/ถ้วย</div>
+                        <button onclick="addToCart('น้ำจิ้มถั่ว', 20)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/e1.jpg" class="thumbnail" alt="e1">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">ขนมปังปิ้ง</h4>
+                        <p class="text-gray-600 mb-3">ขนมปังสด ปิ้งกรอบ</p>
+                        <div class="text-xl font-bold text-purple-600 mb-3">10 บาท/แผ่น</div>
+                        <button onclick="addToCart('ขนมปังปิ้ง', 10)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages -->
+            <div>
+                <h3 class="text-2xl font-bold text-blue-600 mb-6">🥤 เครื่องดื่ม</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/c1.jpg" class="thumbnail" alt="c1">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">น้ำเปล่า</h4>
+                        <div class="text-xl font-bold text-purple-600 mb-3">10 บาท</div>
+                        <button onclick="addToCart('น้ำเปล่า', 10)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/coke.jpg" class="thumbnail" alt="coke">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">โค้ก</h4>
+                        <div class="text-xl font-bold text-purple-600 mb-3">15 บาท</div>
+                        <button onclick="addToCart('โค้ก', 15)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/orange.jpg" class="thumbnail" alt="orange">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">น้ำส้ม</h4>
+                        <div class="text-xl font-bold text-purple-600 mb-3">15 บาท</div>
+                        <button onclick="addToCart('น้ำส้ม', 15)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <img src="picture/tea.jpg" class="thumbnail" alt="orange">
+                        <br>
+                        <h4 class="font-bold text-lg mb-2">ชาเย็น</h4>
+                        <div class="text-xl font-bold text-purple-600 mb-3">20 บาท</div>
+                        <button onclick="addToCart('ชาเย็น', 20)" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions -->
+    <section id="promotions" class="py-16 bg-orange-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">โปรโมชั่นพิเศษ</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl p-6 text-center text-white">
+                    <div class="text-4xl mb-4">🚚</div>
+                    <h3 class="text-xl font-bold mb-2">ส่งฟรี!</h3>
+                    <p class="mb-4">ซื้อครบ 100 บาท ส่งฟรีทันที</p>
+                    <div class="text-sm opacity-90">*ในเขตพื้นที่บริการ</div>
+                </div>
+                <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-6 text-center text-white">
+                    <div class="text-4xl mb-4">🎁</div>
+                    <h3 class="text-xl font-bold mb-2">โปร 1 แถม 1</h3>
+                    <p class="mb-4">ซื้อชุด 20 ไม้ แถมน้ำจิ้มถั่วฟรี!</p>
+                    <div class="text-sm opacity-90">*จำกัดวันละ 50 ชุด</div>
+                </div>
+                <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-center text-white">
+                    <div class="text-4xl mb-4">🎫</div>
+                    <h3 class="text-xl font-bold mb-2">คูปองส่วนลด</h3>
+                    <p class="mb-4">ลด 20% สำหรับลูกค้าใหม่</p>
+                    <div class="text-sm opacity-90">*ใช้โค้ด: NEWCUSTOMER</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Order -->
+    <section id="order" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">วิธีการสั่งซื้อ</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">🛒</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">สั่งผ่านเว็บไซต์</h3>
+                    <p class="text-gray-600 mb-6">เลือกสินค้าใส่ตะกร้า กรอกข้อมูลจัดส่ง ชำระเงิน</p>
+                    <button onclick="showCart()" class="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors">
+                        เริ่มสั่งซื้อ
+                    </button>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">💬</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">สั่งผ่าน LINE</h3>
+                    <p class="text-gray-600 mb-6">แอด LINE ID: @680nzaau ส่งรายการสินค้าที่ต้องการ</p>
+                    <button onclick="openLine()" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors">
+                        เพิ่ม LINE
+                    </button>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">📞</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">สั่งผ่านโทรศัพท์</h3>
+                    <p class="text-gray-600 mb-6">โทร 02-236-2059, 063-396-4365 <br>เปิดทุกวัน 10:00-20:00 น.</p>
+                    <button onclick="callPhone()" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                        โทรเลย
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">🍢 หมูสะเต๊ะ สว่าง เจ้าเก่า</h3>
+                    <p class="text-gray-500">รสชาติดั้งเดิมที่คุณคุ้นเคย มานานกว่า 50 ปี</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">ติดต่อเรา</h4>
+                    <div class="space-y-2 text-gray-500">
+                        <p>📞 02-236-2059, 063-396-4365</p>
+                        <p>💬 LINE: @680nzaau</p>
+                        <p>📧 info@680nzaau</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">เวลาทำการ</h4>
+                    <div class="space-y-2 text-gray-500">
+                        <p>จันทร์ - อาทิตย์</p>
+                        <p>10:00 - 20:00 น.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 หมูสะเต๊ะ สว่าง เจ้าเก่า. สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-md w-full p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold">ตะกร้าสินค้า</h3>
+                    <button onclick="hideCart()" class="text-gray-500 hover:text-gray-700">✕</button>
+                </div>
+                <div id="cart-items" class="space-y-3 mb-4">
+                    <p class="text-gray-500 text-center py-8">ตะกร้าว่าง</p>
+                </div>
+                <div class="border-t pt-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="font-bold">รวมทั้งหมด:</span>
+                        <span id="cart-total" class="font-bold text-xl text-blue-600">0 บาท</span>
+                    </div>
+                    <button id="checkout-btn" onclick="checkout()" class="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors disabled:bg-gray-500" disabled>
+                        สั่งซื้อ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let cartTotal = 0;
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function addToCart(itemName, price) {
+            const existingItem = cart.find(item => item.name === itemName);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: itemName, price: price, quantity: 1 });
+            }
+            updateCartDisplay();
+            
+            // Show success message
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'เพิ่มแล้ว ✓';
+            button.style.backgroundColor = '#16a34a';
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.backgroundColor = '';
+            }, 1000);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            if (totalItems > 0) {
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">ตะกร้าว่าง</p>';
+                checkoutBtn.disabled = true;
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                        <div>
+                            <div class="font-medium">${item.name}</div>
+                            <div class="text-sm text-gray-600">${item.price} บาท × ${item.quantity}</div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold">${item.price * item.quantity} บาท</span>
+                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700">🗑️</button>
+                        </div>
+                    </div>
+                `).join('');
+                checkoutBtn.disabled = false;
+            }
+
+            cartTotalElement.textContent = `${cartTotal} บาท`;
+        }
+
+        function showCart() {
+            document.getElementById('cart-modal').classList.remove('hidden');
+        }
+
+        function hideCart() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            
+            const orderSummary = cart.map(item => `${item.name} × ${item.quantity} = ${item.price * item.quantity} บาท`).join('\n');
+            alert(`ขอบคุณสำหรับการสั่งซื้อ!\n\nรายการสินค้า:\n${orderSummary}\n\nรวมทั้งหมด: ${cartTotal} บาท\n\nเราจะติดต่อกลับเพื่อยืนยันคำสั่งซื้อ`);
+            
+            cart = [];
+            updateCartDisplay();
+            hideCart();
+        }
+
+        function openLine() {
+            alert('กรุณาเพิ่ม LINE ID: @680nzaau\nหรือสแกน QR Code ที่ร้าน');
+        }
+
+        function callPhone() {
+            window.open('tel:021234567');
+        }
+
+        document.getElementById('cart-btn').addEventListener('click', showCart);
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9702aa31b358f4cf',t:'MTc1NTM2NTQ4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
